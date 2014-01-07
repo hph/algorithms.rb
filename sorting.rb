@@ -23,4 +23,28 @@ class Array
       end
     end
   end
+
+  def merge_sort
+    return self if self.size <= 1
+    m = self.size / 2
+    merge(self[0...m].merge_sort, self[m..-1].merge_sort)
+  end
+
+  def merge_sort!
+    self.replace(self.merge_sort)
+  end
+
+  def merge(left, right)
+    ary = []
+    until left.empty? || right.empty?
+      if left.first <= right.first
+        ary << left.shift
+      else
+        ary << right.shift
+      end
+    end
+    ary + left + right
+  end
+
+  private :merge
 end
