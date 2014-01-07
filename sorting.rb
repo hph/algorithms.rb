@@ -57,4 +57,16 @@ module Enumerable
     shuffle! until each_cons(2).all? { |a, b| a <= b }
     self
   end
+
+  def bubble_sort
+    dup.bubble_sort!
+  end
+
+  def bubble_sort!
+    each_index do |i|
+      (1...size - i).each do |j|
+        self[j], self[j - 1] = self[j - 1], self[j] if self[j] < self[j - 1]
+      end
+    end
+  end
 end
