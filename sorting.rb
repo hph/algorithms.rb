@@ -47,4 +47,13 @@ class Array
   end
 
   private :merge
+
+  def bogosort
+    self.dup.bogosort!
+  end
+
+  def bogosort!
+    self.shuffle! until each_cons(2).all? { |a, b| a <= b }
+    self
+  end
 end
