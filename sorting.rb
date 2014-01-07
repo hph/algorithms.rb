@@ -12,11 +12,11 @@ module Enumerable
   end
 
   def insertion_sort
-    self.dup.insertion_sort!
+    dup.insertion_sort!
   end
 
   def insertion_sort!
-    self.each_index do |i|
+    each_index do |i|
       j = i
       while j > 0 && self[j - 1] > self[j]
         self[j - 1], self[j] = self[j], self[j - 1]
@@ -26,13 +26,13 @@ module Enumerable
   end
 
   def merge_sort
-    return self if self.size <= 1
-    m = self.size / 2
+    return self if size <= 1
+    m = size / 2
     merge(self[0...m].merge_sort, self[m..-1].merge_sort)
   end
 
   def merge_sort!
-    self.replace(self.merge_sort)
+    replace(merge_sort)
   end
 
   def merge(left, right)
@@ -50,11 +50,11 @@ module Enumerable
   private :merge
 
   def bogosort
-    self.dup.bogosort!
+    dup.bogosort!
   end
 
   def bogosort!
-    self.shuffle! until each_cons(2).all? { |a, b| a <= b }
+    shuffle! until each_cons(2).all? { |a, b| a <= b }
     self
   end
 end
