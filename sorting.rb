@@ -1,13 +1,14 @@
 module Enumerable
   def quicksort
-    return self if self.size <= 1
-    pivot = self.shift
-    left, right = self.partition { |n| n < pivot }
+    return self if size <= 1
+    ary = dup
+    pivot = ary.shift
+    left, right = ary.partition { |n| n < pivot }
     left.quicksort + [pivot] + right.quicksort
   end
 
   def quicksort!
-    self.replace(self.quicksort)
+    replace(quicksort)
   end
 
   def insertion_sort
