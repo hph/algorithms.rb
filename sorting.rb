@@ -54,7 +54,7 @@ module Enumerable
   end
 
   def bogosort!
-    shuffle! until each_cons(2).all? { |a, b| a <= b }
+    shuffle! until sorted?
     self
   end
 
@@ -68,5 +68,9 @@ module Enumerable
         self[j], self[j - 1] = self[j - 1], self[j] if self[j] < self[j - 1]
       end
     end
+  end
+
+  def sorted?
+    each_cons(2).all? { |a, b| a <= b }
   end
 end
