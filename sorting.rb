@@ -1,4 +1,4 @@
-class Array
+module Enumerable
   def quicksort
     return self if self.size <= 1
     pivot = self.shift
