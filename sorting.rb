@@ -70,6 +70,14 @@ module Enumerable
     end
   end
 
+  def permutation_sort
+    permutation.select(&:sorted?).first
+  end
+
+  def permutation_sort!
+    replace(permutation_sort)
+  end
+
   def sorted?
     each_cons(2).all? { |a, b| a <= b }
   end

@@ -51,6 +51,15 @@ describe Enumerable do
     @ary.should == @sorted
   end
 
+  it '#permutation_sort should return a sorted array' do
+    @ary.permutation_sort.should == @sorted
+  end
+
+  it '#permutation_sort! should sort an array' do
+    @ary.permutation_sort!.should == @sorted
+    @ary.should == @sorted
+  end
+
   it '#sorted? should tell us whether an iterable is sorted' do
     @sorted.sorted?.should be(true)
     @sorted.reverse.sorted?.should be(false)
